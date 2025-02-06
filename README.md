@@ -1,2 +1,0 @@
-# Agriculture-Portal
-CDAC Project

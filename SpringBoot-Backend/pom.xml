@@ -9,9 +9,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sunbeam</groupId>
-	<artifactId>products-api3</artifactId>
+	<artifactId>kisan-project</artifactId>
 	<version>0.0.1</version>
-	<name>products-api3</name>
+	<name>kisan-project</name>
 	<description> Spring security with DB based User details retrieved using JPA n JWT based authentication n authorization</description>
 	<url />
 	<licenses>
