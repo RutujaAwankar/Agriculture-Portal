@@ -1,41 +1,41 @@
 package com.kisan.pojo;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 import java.util.List;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@NoArgsConstructor
+@Table
 @Getter
 @Setter
-@ToString(callSuper = true)
-public class Orders extends BaseEntity
-{ 
-	
+@NoArgsConstructor
+public class Orders extends BaseEntity {
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private UserEntity user;
 
-//    @OneToOne
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> items = new ArrayList<>();
+
+    private LocalDateTime orderDate;
+    private double totalAmount;
     
-    private double totalAmount; // Total cost of the order
-
     @Enumerated(EnumType.STRING)
-    private OrderStatus status; // PENDING, SHIPPED, DELIVERED, CANCELLED
+    private OrderStatus status = OrderStatus.PENDING;
 
-    private LocalDateTime orderDate; 
-
-    private String shippingAddress;
-	
+    public enum OrderStatus {
+        PENDING, COMPLETED, CANCELLED
+    }
 }
