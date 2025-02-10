@@ -339,10 +339,6 @@
           "mobile": {
             "type": "string",
             "nullable": true
-          },
-          "role": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

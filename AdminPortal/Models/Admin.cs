@@ -16,7 +16,7 @@ namespace AdminPortal.Models
         [JsonIgnore]
         [BindNever]
         public String Salt { get; set; }
-        public String Role { get; set; }
+        public String Role { get; set; } = "ROLE_ADMIN";
         public String Mobile { get; set; }
 
     }
